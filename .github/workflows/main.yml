@@ -1,0 +1,34 @@
+name: Test and send coverage
+
+on:
+  push:
+    branches:
+      - development
+  pull_request:
+
+jobs:
+  test-and-send-coverage:
+    runs-on: ubuntu-latest
+    env:
+      DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Tests and Generate Coverage
+        run: npm run test:cov
+
+      - name: Report results to DeepSource
+        run: |
+          # Install deepsource CLI
+          curl https://deepsource.io/cli | sh
+          ./bin/deepsource report --analyzer test-coverage --key javascript --value-file ./coverage/cobertura-coverage.xml
