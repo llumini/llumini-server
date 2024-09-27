@@ -20,7 +20,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "commit": "cz",
     "prepare": "husky",
-    "compodoc": "npx compodoc -p tsconfig.json -s"
+    "compodoc": "npx compodoc -p tsconfig.json"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
