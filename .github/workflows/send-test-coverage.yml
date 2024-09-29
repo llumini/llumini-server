@@ -3,7 +3,7 @@ name: Test and send coverage
 on:
   push:
     branches:
-      - development
+      - develop
   pull_request:
 
 jobs:
