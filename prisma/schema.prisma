@@ -16,7 +16,7 @@ datasource db {
 model Note {
   id        String   @id @default(cuid())
   title     String
-  content   Json
+  content   Json[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
