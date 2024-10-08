@@ -18,7 +18,7 @@ export class AppController {
     return this.appService.getHello();
   }
   @Post('note')
-  async createNote(@Body() data: { title: string; content: NoteContent }) {
+  async createNote(@Body() data: { title: string; content: NoteContent[] }) {
     const { title, content } = data;
 
     return this.notesService.createNote({
